@@ -1,0 +1,70 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,blkarray,braket,caption,enumitem,fancyvrb,graphicx,hyperref,relsize,verbatim}
+\usepackage[numbers]{natbib}
+\usepackage[section]{placeins}
+\graphicspath{{./images/}}
+\bibliographystyle{apalike}
+
+\begin{document}
+
+\title{An Introduction to Measure Theory - Chapter 1}
+\author{Emil Marinov}
+\maketitle
+
+\section{Exercise 1.1.1 - Boolean Closure}
+
+\textit{Show that if $E, F \subset \mathbb{R}^d$ are elementary sets, then the union $E \cup F$, 
+the intersection $E \cap F$, and the
+set theoretic difference $E \backslash F := \{x \in E : x \notin F\}$, and the symmetric
+difference $E \Delta F := (E \backslash F) \cup (F \backslash E)$ are also elementary. If $x \in \mathbb{R}^d$, 
+show that the translate $E + x := \{y+x : y \in E\}$ is also an elementary
+set.}
+\\
+\\
+An \textbf{elementary set} is that which is a union of a finite amount of boxes.  Thus, let
+$\bigcup_i E_i$ and $\bigcup_j F_j$ be the unions of the finite number of boxes comprising sets $E$ and $F$, respectively.
+
+\begin{equation}
+   \begin{aligned}
+        E \cup F = \bigcup_i E_i \cup \bigcup_j F_j
+        = \bigcup_i \bigcup_j E_i \cup F_j
+   \end{aligned}
+\end{equation}
+
+\begin{equation}
+   \begin{aligned}
+      E \cap F = \bigcup_i E_i \cap \bigcup_j F_j
+      = \bigcup_i \bigcup_j E_i \cap F_j
+   \end{aligned}
+\end{equation}
+
+\begin{equation}
+   \begin{aligned}
+      E \backslash F = \bigcup_i E_i \backslash \bigcup_j F_j 
+      = \bigcup_i \left( E_i \cap \neg \bigcup_j F_j \right)
+      = \bigcup_i \left( E_i \backslash \bigcup_j F_j \right)
+   \end{aligned}
+\end{equation}
+
+This one tripped me up a bit because elementary sets aren't closed under set negation,
+and I was inherently proving the closure of elementary sets under the set difference for some reason.
+
+\begin{equation}
+   \begin{aligned}
+      E \Delta F = E \backslash F \cup F \backslash E
+      = \bigcup_i \left( E_i \backslash \bigcup_k F_k \right) \cup \bigcup_j \left( F_j \backslash \bigcup_k E_k \right) 
+      = \bigcup_i \bigcup_j \left( E_i \backslash \bigcup_k F_k \cup F_j \backslash \bigcup_k E_k \right)
+   \end{aligned}
+\end{equation}
+
+\begin{equation}
+   \begin{aligned}
+      E + x = \bigcup_i \left( E_i + x \right)
+   \end{aligned}
+\end{equation}
+
+The set theoretical operations of union, intersection, difference, and symmetric difference, and translation, 
+between two elementary sets yield a union of finitely countable boxes, which is itself an elementary set. $\square$
+
+\end{document}
