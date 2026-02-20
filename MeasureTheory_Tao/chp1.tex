@@ -67,4 +67,39 @@ and I was inherently proving the closure of elementary sets under the set differ
 The set theoretical operations of union, intersection, difference, and symmetric difference, and translation, 
 between two elementary sets yield a union of finitely countable boxes, which is itself an elementary set. $\square$
 
+\section{Exercise 1.1.2}
+
+\textit{Give an alternate proof of Lemma 1.1.2(ii) by showing that any two partitions of $E$ into boxes admit a mutual refinement
+into boxes that arise from taking Cartesian products of elements from
+finite collections of disjoint intervals.}
+\\
+\textbf{Lemma 1.1.1(ii)}
+If $E$ is partitioned as the finite union $B_1 \cup ... \cup B_k$ of disjoint
+boxes, then the quantity $m(E) := |B_1| + ... + |B_k|$ is independent of the partition. In other words, given any other
+partition $B'_1 \cup ... \cup B'_{k'}$ of $E$, one has $|B_1| + ... + |B_k| = |B'_1| + ... + |B'_{k'}|$.
+\\
+\begin{equation}
+   \begin{aligned}
+      \lvert E \rvert = \lvert \bigcup_k B_k \rvert = \lvert \bigcup_{\tilde{k}} B_{\tilde{k}} \rvert \\
+      = \lvert \bigcup_k I_{k,1} \times ... \times I_{k,d} \rvert = \lvert \bigcup_{\tilde{k}} I_{\tilde{k},1} \times ... \times I_{\tilde{k},d} \rvert
+   \end{aligned}
+\end{equation}
+
+Let $\{ J_{m,1}, ..., J_{m,d} \}$ be the disjoint intervals between all $2k$ endpoints of $\{ I_{k,1}, ..., I_{k,d} \}$ and 
+$\{ \tilde{J}_{\tilde{m},1}, ..., \tilde{J}_{\tilde{m},d} \}$ be the disjoint intervals between all $2\tilde{k}$
+endpoints of $\{ I_{\tilde{k},1}, ..., I_{\tilde{k},d} \}$.
+Let $l_{k, i}$ for $i \in [d]$ denote the disjoint intervals from $J_{m,i}$ that union to form $I_{k,i}$
+and $\tilde{l}_{\tilde{k}, i}$ denote the disjoint intervals from $\tilde{J}_{\tilde{m},i}$ that union to form $I_{\tilde{k},i}$.
+
+\begin{equation}
+   \begin{aligned}
+      \lvert E \rvert
+      = \lvert \bigcup_k \left( \bigcup_{l_{k,1}} J_{l_{k,1}} \times ... \times \bigcup_{l_{k,d}} J_{l_{k,d}} \right) \rvert = 
+      \lvert \bigcup_{\tilde{k}} \left( \bigcup_{\tilde{l}_{\tilde{k},1}} J_{\tilde{l}_{\tilde{k}, 1}} \times ... \times \bigcup_{\tilde{l}_{\tilde{k},d}} J_{\tilde{l}_{\tilde{k}, d}} \right) \rvert
+   \end{aligned}
+\end{equation}
+
+Thus, it has been shown that any two partitions of $E$ into boxes admit a mutual refinement into boxes that arise from taking the 
+Cartesian product from elements from finite collections of disjoint intervals. $\square$
+
 \end{document}
