@@ -102,4 +102,107 @@ and $\tilde{l}_{\tilde{k}, i}$ denote the disjoint intervals from $\tilde{J}_{\t
 Thus, it has been shown that any two partitions of $E$ into boxes admit a mutual refinement into boxes that arise from taking the 
 Cartesian product from elements from finite collections of disjoint intervals. $\square$
 
+\section{Exercise 1.1.2.5}
+
+\textit{Give some examples of sets for which the limit formula $m(e) = \frac{1}{N} \#\left( E \cap \frac{1}{N} \mathcal{N}^d \right)$ does not exist.}
+
+\textbf{Example 1}.  The limit can fail if it diverges to $\pm \infty$.
+This occurs when the interval is unbounded.
+
+\begin{equation}
+   \begin{aligned}
+      E = \mathbb{R}^d
+   \end{aligned}
+\end{equation}
+
+\textbf{Example 2}.  Even if bounded, the limit can fail if it oscillates.
+
+\begin{equation}
+   \begin{aligned}
+      E = \bigcup_{k=1}^\infty \left( \frac{1}{2^{2k}}, \frac{1}{2^{2k-1}} \right)
+   \end{aligned}
+\end{equation}
+
+This is the set of alternating dyadic intervals close to 0.
+
+\section{Exercise 1.1.3 - Uniqueness of Elementary Measure}
+
+\textit{Let $d \ge 1$.  Let $m' : \mathcal{E}(\mathbb{R}^d) \to \mathbb{R}^+$ be a map from the collection 
+$\mathcal{E}(\mathbb{R}^d)$ of elementary subsets of $\mathbb{R}^d$ to the nonnegative reals that obeys the non-negativity,
+finite additivity, and translation invariance properties. Show that
+there exists a constant $c \in \mathbb{R}^+$ such that $m'(E) = cm(E)$ for all elementary sets $E$.
+In particular, if we impose the additional normalisation $m'[0,1)^d = 1$ then $m' \equiv m$.
+Hint: Set $c := m'([0,1)^d)$, and then compute $m'([0,\frac{1}{n})^d)$ for any positive integer $n$.}\\
+\\
+
+The half-open sets in the hint indicate that finite additivity corresponding to tiling is involved in this proof.
+Further, the $\frac{1}{n}$ in the hint indicates that the set to be measured is broken into $n^d$ tiles.
+
+Let $c = m'([0,1)^d)$ be a scalar corresponding to the $m'$ measure of the unit box.
+Partition the unit box into $n^d$ tiles as: $[0,1) = \bigcup_{i=1}^{n^d} \left( [0,1/n)^d + x_i \right)$.
+Then,
+
+\begin{equation}
+   \begin{aligned}
+      m'([0,1)^d) = m'\left(\bigcup_{i=1}^{n^d} \left( [0,1/n)^d + x_i \right)\right) \\
+      = \sum_{i=1}^{n^d} m'\left([0,1/n)^d + x_i \right) && \text{By finite additivity.} \\
+      = \sum_{i=1}^{n^d} m'\left([0,1/n)^d \right) && \text{By translational invariance.} \\
+      = n^d m'([0,1/n)^d)
+   \end{aligned}
+\end{equation}
+
+Similarly, $m([0,1)^d) = n^d m([0,1/n)^d)$.
+Rewrite $c$ as the ratio of these two measures:
+
+\begin{equation}
+   \begin{aligned}
+      c = \frac{n^d m'([0,1/n)^d)}{n^d m([0,1/n)^d)} \\
+      = \frac{m'([0,1/n)^d)}{m([0,1/n)^d} \\
+      = \frac{m'([0,1)^d)}{m([0,1)^d)}
+   \end{aligned}
+\end{equation}
+
+Thus, by finite addivitiy of the elementary set's decomposition into finite disjoint unions of half-open boxes,
+the existence of a unique $c$ for all $E \in \mathcal{E}^d$ has been proved. $\square$
+
+\subsubsection{Scratch Work}
+From non-negativity and finite additivity, monotonicity is derived: 
+Let $X$ be a subset of $Y$.  Then, there exists some elementary set $Z = Y \backslash X$ disjoint to $X$ such that $Y = X \cup Z$.
+\begin{equation}
+   \begin{aligned}
+      m(Y) = m(X) + m(Z) \quad \forall X,Z : X \cap Z = \emptyset && \text{By finite addivity.} \\
+      m(X) = m(Y) - m(Z) \\
+      m(X) \le m(Y) && \text{By non-negativitity of $Z$.}
+   \end{aligned}
+\end{equation}
+
+From this, finite subadditivity may be derived:
+
+\begin{equation}
+   \begin{aligned}
+      m(X \cup Y) = m(X \cup (Y \backslash X)) \\ 
+      = m(X) + m(Y \backslash X) && \text{By finite additivity.} \\
+      \le m(X) + m(Y) && \text{By monotonicity of $m(Y \backslash X)$ and $m(Y)$.}
+   \end{aligned}
+\end{equation}
+
+Now, let $E$ be the union of a finite amount of elementary sets, $E = \bigcup_i E_i$.
+By finite subadditivity, $m(E) \le \sum_i E_i$, and by scalar multiplication, $c * m(E) \le c * \sum_i E_i$
+
+Let $c = m'([0,1)^d)$.
+
+\begin{equation}
+   \begin{aligned}
+      c m(E) = m'([0,1)^d) m(E) \\
+      \le m'([0,1)^d) \sum_i m(E_i) \\
+      = \sum_i m'([0,1)^d) m(E_i)
+   \end{aligned}
+\end{equation}
+
+\begin{equation}
+   \begin{aligned}
+      m'([0, \frac{1}{n})^d) = m'([0,1)^d) m([0, \frac{1}{n})^d)
+    \end{aligned}
+\end{equation}
+
 \end{document}
