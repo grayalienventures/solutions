@@ -1,0 +1,129 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,blkarray,braket,caption,enumitem,fancyvrb,graphicx,hyperref,relsize,verbatim}
+\usepackage[numbers]{natbib}
+\usepackage[section]{placeins}
+\graphicspath{{./images/}}
+\bibliographystyle{apalike}
+
+\begin{document}
+
+\title{Chapter 1 - Introduction to Groups}
+\author{Emil Marinov}
+\maketitle
+
+\section{Problem 1}
+\textit{Determine which of the following binary operations are associative:}
+
+\begin{enumerate}
+   \item \textit{The operation $*$ on $\mathbb{Z}$ defined by $a * b = a - b$.} \\
+   \\
+
+   Proof by contradiction.
+   Assume the operation $*$ is associative.
+   Then, $(a * b) * c = a * (b * c) \forall a, b, c \in \mathbb{Z}$.
+
+   \begin{equation}
+      \begin{aligned}
+         (a * b) * c = (a - b) - c = a - b - c \\
+         a * (b * c) = a - (b - c) = a - b + c
+      \end{aligned}
+   \end{equation}
+
+   This is a contradiction, as for any fixed $a$ and $b$, $\exists c : a - b - c \neq a - b + c$.
+   Take any $c \neq 0$, for example.
+   Thus, the operation $*$ is \textbf{not associative}.
+
+   \item \textit{The operation $*$ on $\mathbb{R}$ defined by $a * b = a + b + ab$.} \\
+   \\
+   For $a, b, c \in \mathbb{R}$,
+
+   \begin{equation}
+      \begin{aligned}
+         (a * b) * c = (a + b + ab) * c \\
+         = (a + b + ab) + c + (a + b + ab)c \\
+         = a + b + ab + c + ac + bc + abc \\
+         = a + b + c + bc + ab + ac + abc \\
+         = a + (b + c + bc) + a(b + c + bc) \\
+         = a * (b + c + bc) \\
+         = a * (b * c)
+      \end{aligned}
+   \end{equation}
+
+   $\forall a, b, c \in \mathbb{R}$, $(a * b) * c = a * (b * c)$.
+   Thus, the operation $*$ is \textbf{associative}.
+
+   \textbf{Version 2 - The Imposter Additive Operation} \\
+   Notice that $a + b + ab = (a + 1)(b + 1) - 1$ and define the map $\varphi : (\mathbb{R}, *) \to (\mathbb{R}^\times, \circ)$ as 
+   $\phi(a) = a + 1$, or a linear translation over $\mathbb{R}$.
+
+   \begin{equation}
+      \begin{aligned}
+         \phi(a * b) = 1 + (a * b) \\
+         = 1 + (a + b + ab) \\
+         = (a + 1)(b+1) \\
+         = \phi(a) \circ \phi(b)
+      \end{aligned}
+   \end{equation}
+
+   So, $\varphi$ is a homomorphism.
+   It must now be determined if $\varphi$ is bijective.
+   Proof by contradiction is used to show injection.
+   Assume $a, b \in \mathbb{R} : a \neq b$ map to the same element $s \in \mathbb{R}$ in the range.
+   
+   \begin{equation}
+      \begin{aligned}
+         \varphi(a) = \varphi(b) = s \\
+         a + 1 = b + 1 = s \\
+         a = b = s - 1
+      \end{aligned}
+   \end{equation}
+
+   This shows $a = b$, reaching a contridiction, and indicating that the assumption of $a \neq b$ is false.
+   Proof by construction is used to prove surjectivity.
+   For all elements $c \in (\mathbb{R}, \circ)$, there exists an element that maps to it, namely a left translation by 1.
+   Because $\varphi$ is bijective, it is an isomorphic map, and there exists an inverse
+   $(\mathbb{R}^\times, \circ) \to (\mathbb{R}, *)$ defined as $\phi^{-1}(b) = b - 1$.
+
+   \begin{equation}
+      \begin{aligned}
+         (a * b) * c = \varphi^{-1}\left[ ((\varphi(a * b)) \circ \varphi(c) ) \right] \\
+         = \varphi^{-1}\left[ ((\varphi(a) \circ \varphi(b)) \circ \varphi(c) ) \right] \\
+         = \varphi^{-1}\left[ (\varphi(a) \circ (\varphi(b) \circ \varphi(c)) ) \right] \\
+         = \varphi^{-1}\left[ (\varphi(a) \circ \varphi(b * c) ) \right] \\
+         = \varphi^{-1}\left[ (\varphi(a) * \varphi(b * c) ) \right] \\
+         = \varphi^{-1}\left[ (\varphi(a) * \varphi(b * c) ) \right] \\
+         a * (b * c)
+      \end{aligned}
+   \end{equation}
+
+   \begin{equation}
+      \begin{aligned}
+         (a*b)*c = a*(b*c) \quad \forall a, b, c \in \mathbb{R} && \text{By associative property of multiplication.}
+      \end{aligned}
+   \end{equation}
+
+\end{enumerate}
+
+\section{Problem 5}
+\textit{Prove for all $n > 1$ that $\mathbb{Z}/n\mathbb{Z}$ is not a group under multiplication of residue classes.} \\
+\\
+%The existence of a single zero divisor, $\bar{0}$, without a left inverse indicates it is not a group.
+%As the composition of $\bar{0}$ with any other element of the set is not injective, there exists no inverse.
+%For injectivity to hold, $f(x) = f(y) \imply x = y$.
+%However, $f(\bar{0}) = f(\bar{1})$, and $0 \neq 1$, in all cases where $n > 1$.
+%Thus, the operation is not bijective, and non-invertible.
+
+The left and right cancellation laws must hold for a group $G$.
+
+\begin{equation}
+   \begin{aligned}
+      au = av \implies u = v \quad \forall a,u,v \in G && \text{By left cancellation.} \\
+      ua = va \implies u = v \quad \forall a,u,v \in G && \text{By right cancellation.}
+   \end{aligned}
+\end{equation}
+
+However, for $\mathbb{Z}/n\mathbb{Z}$, $\bar{0} * \bar{a} = \bar{0} * \bar{b}$, even when $a \neq b$.
+Thus, $\mathbb{Z}/n\mathbb{Z}$ for $n > 1$ is \textbf{not a group}.
+
+\end{document}

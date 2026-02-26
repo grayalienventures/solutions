@@ -1,0 +1,93 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,blkarray,braket,caption,enumitem,fancyvrb,graphicx,hyperref,relsize,verbatim}
+\usepackage[numbers]{natbib}
+\usepackage[section]{placeins}
+\graphicspath{{./images/}}
+\bibliographystyle{apalike}
+
+\begin{document}
+
+\title{Chapter 1.7 - Group Actions}
+\author{Emil Marinov}
+\maketitle
+
+\section{Problem 20}
+\textit{Let $G$ be a group and let $G$ act upon itself by left conjugation, so each $g \in G$ maps $G$ to $G$ by \\
+\begin{equation}
+   \begin{aligned}
+      x \to gxg^{-1}
+   \end{aligned}
+\end{equation}
+For fixed $g \in G$, prove that conjugation by $g$ is an isomorphism from $G$ onto itself (i.e., is an \textbf{automorphism} of $G$
+- cf. Exercise 20, Section 6).
+Deduce that $x$ and $gxg^{-1}$ have the same order for all $x$ in $G$ and that for any subset $A$ of $G$, 
+$|A| = |gAg^{-1}|$ (here $gAg^{-1} | a \in A$).} \\
+\\
+To show that the left conjugation on $G$ is an isomorphism, it must be shown that 1) it is a homomorphism, 2) it is injective, 
+and 3) it is surjective.
+
+\textbf{Show Homomorphic} \\
+
+\begin{equation}
+   \begin{aligned}
+      \varphi(xy) = g(xy)g^{-1} \\
+         = gxyg^{-1} && \text{By associativity.} \\
+         = gxg^{-1}gyg^{-1} \\
+         = (gxg^{-1})(gyg^{-1}) \\
+         = \varphi(x) \varphi(y)
+   \end{aligned}
+\end{equation}
+
+\textbf{Show Injective} \\
+
+Here, it is needed to be shown that $\varphi(x) = \varphi(y) \implies x = y$.
+
+\begin{equation}
+   \begin{aligned}
+      \varphi(x) = gxg^{-1} = gyg^{-1} = \varphi(y) \\
+      gxg^{-1}g = gyg^{-1}g \\
+      gx = gy \\
+      g^{-1}gx = g^{-1}gy \\
+      x = y
+   \end{aligned}
+\end{equation}
+
+\textbf{Show Surjective}
+
+To show surjectivity, it must be shown that each element from the codomain has an element in the domain 
+that maps to it: $\forall y \in G, \exists x \in G \quad \text{s.t.} \varphi(x) = y$.
+
+\begin{equation}
+   \begin{aligned}
+      y = \varphi(x) = gxg^{-1} \\
+      \implies x = g^{-1} y g
+   \end{aligned}
+\end{equation}
+
+This holds for all $g \in G$.  Thus, it is surjective.
+
+\textbf{Order} \\
+
+Let $n$ be the order of $x$, i.e. $x^n = 1$.
+Let $m$ be the order of $\varphi(x)$, i.e. $\varphi(x)^m = 1$.
+
+\begin{equation}
+   \begin{aligned}
+      \varphi(x)^m = (gxg^{-1})^m 
+      = gx^mg^{-1} = e \\
+      x^m = g^{-1}eg = g^{-1}g = e
+   \end{aligned}
+\end{equation}
+
+If $x^n = e$, then $gx^ng^{-1} = e$.  This implies $|\varphi(x)| = m \le n$.
+If $gx^mg^{-1} = e$, then $x^m = e$.  This implies $|x| = n \le m$.
+
+Because $m \le n$ and $n \le m$, $m=n$.
+Thus, the order of the automorphism is the same as that for the input group element.
+
+\textbf{Order 2}
+
+$gAg^{-1}$ is bijective with $A$.  Thus, $|A| = |gAg^{-1}|$.
+
+\end{document}
