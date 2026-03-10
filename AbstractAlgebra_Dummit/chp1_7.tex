@@ -12,6 +12,71 @@
 \author{Emil Marinov}
 \maketitle
 
+\section{Problem 18}
+
+\textit{Let $H$ be a group acting on set $A$.  Prove that the relation $\sim$ on $A$ defined by}
+
+\begin{equation}
+   \begin{aligned}
+      a \sim b \quad \text{iff } a=hb \quad \text{for some } h \in H
+   \end{aligned}
+\end{equation}
+
+\textit{is an equivalence relation.
+(For each $x \in A$ the equivalence class of $x$ under $\sim$ is called the \textbf{orbit} of $x$ under 
+the action of $H$.
+The orbits under the action of $H$ partition the set $A$.)} \\
+\\
+To show an equivalence, reflexivity, symmetry, and transitivity must be shown. \\
+\textbf{Reflexivity} states that $(a, a) \in \rho \forall a$, where $\rho$ is the relation.
+
+\begin{equation}
+   \begin{aligned}
+      a = ea
+   \end{aligned}
+\end{equation}
+
+As $e \in H$, there exists an $h = e \in H$ such that $a = ha$.  Thus, $a \sim a$.
+
+\textbf{Symmetry.} The relation on $a$ and $b$ is symmetric iff $(a,b) \in \rho \implies (b,a) \in \rho$.
+Let $a = hb$.
+
+\begin{equation}
+   \begin{aligned}
+      a = hb \\
+      h^{-1} a = (h^{-1} h)b \\
+      h^{-1} a = b
+   \end{aligned}
+\end{equation}
+
+$h^{-1} \in H$ and there exists a $g = h^{-1} \in H$ such that $b = ga$.
+Thus symmetry has been shown.
+
+\textbf{Transitivity.} The relation $\sim$ is transitivity iff $(x,y) \in \rho, (y,z) \in \rho \implies (x,z) \in \rho$.
+Let $a = h_1b$ and $b = h_2c$, for $h_1, h_2 \in H$.
+
+\begin{equation}
+   \begin{aligned}
+      a = h_1b \\
+      a = h_1(h_2c) \\
+      a = (h_1 h_2)c \\
+      a = h_3c && \text{Let } h_3 = h_1 h_2 \in H \\
+      a \sim c
+   \end{aligned}
+\end{equation}
+
+The group operation $h_1 h_2$ yields an element $h_3 \in H$ due to closure.
+
+The relation $~$ on set $A$ defined by $a \sim b \quad \text{iff } a=hb \quad \text{for some } h \in H$
+has been shown to be reflexive, symmetric, and transitive.
+Thus, it has been proven to be an equivalence relation. $\square$ \\
+\\
+The same goes for $y \in A$, or any other element in A.
+The orbits of different elements $x \in A$ under the action of $H$ are disjoint, as indicated by the equivalence relation.
+If they were not disjoint, then the equivalence relation indicates they share ALL elements together 
+i.e. being the same orbit.
+
+
 \section{Problem 20}
 \textit{Let $G$ be a group and let $G$ act upon itself by left conjugation, so each $g \in G$ maps $G$ to $G$ by \\
 \begin{equation}
